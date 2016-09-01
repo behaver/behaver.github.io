@@ -9,4 +9,9 @@ tags: git ubuntu 服务器
 finished: true
 ---
 
-## TEST
+## 创建提供git服务的专有账户
+
+`sudo useradd -m git`
+添加一个名为git的用户，-m表示为用户在/home下创建用户目录。
+`sudo passwd git`
+为git用户设置密码。
