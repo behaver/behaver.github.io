@@ -4,7 +4,7 @@ name: Vincent, Dong # your name
 email: qianxing@yeah.net # your email address
 description: >
     孩子，记住，当你对世界产生疑惑的时候，去做爱。 # this means to ignore newlines until "baseurl:"
-baseurl: "./" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://behaver.github.io" # the base hostname & protocol for your site
 twitter_username: false # your Twitter username
 github_username: behaver # your Github username
