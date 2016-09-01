@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在我的ubuntu上布置团队的git开发服务器"
+title: "在ubuntu上布置团队的git协作服务器"
 subtitle: "在项目文件正式上传前的git服务器. "
 date: 2016-09-01
 author: Vincent, Dong
