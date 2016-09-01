@@ -18,3 +18,16 @@ finished: true
 `$ sudo passwd git`
 
 为git用户设置密码。
+
+git用户至此创建完毕，我们还需要将其设为管理员账户，我们通过修改sudoers文件来实现。
+
+`$ sudo vim /etc/sudoers`
+
+`root ALL=(ALL:ALL)  ALL` 之后添加一行：
+
+`git  ALL=(ALL:ALL)  ALL`
+
+文件保存后，通过su命令切换当前用户到git用户：
+
+`$ su git`
+
