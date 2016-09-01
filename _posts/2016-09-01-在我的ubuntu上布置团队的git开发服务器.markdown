@@ -11,7 +11,10 @@ finished: true
 
 ## 创建提供git服务的专有账户
 
-`sudo useradd -m git`
+`$ sudo useradd -m git`
+
 添加一个名为git的用户，-m表示为用户在/home下创建用户目录。
-`sudo passwd git`
+
+`$ sudo passwd git`
+
 为git用户设置密码。
