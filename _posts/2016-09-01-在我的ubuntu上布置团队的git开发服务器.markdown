@@ -69,8 +69,8 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储
 
 接下来初始化全局设置：
 
-$ git config --global user.name “git”  
-$ git config --global user.email “git@本机IP或域名”
+`$ git config --global user.name “git”`  
+`$ git config --global user.email “git@本机IP或域名”`
 
 ## 四、客户端的配置
 
