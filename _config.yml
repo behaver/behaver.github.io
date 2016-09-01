@@ -1,16 +1,16 @@
 # Site settings
-title: Nice Blog
-name: Nice Blog # your name
-email: youremail@example.com # your email address
+title: 董三碗里的毒
+name: Vincent, Dong # your name
+email: qianxing@yeah.net # your email address
 description: >
-    A Simple Jekyll Blog Theme. # this means to ignore newlines until "baseurl:"
-baseurl: "/Nice_Blog" # the subpath of your site, e.g. /blog
-url: "https://itisbenjamin.github.io" # the base hostname & protocol for your site
-twitter_username: itisbenjamin1 # your Twitter username
-github_username: itisbenjamin # your Github username
-disqus_username: itisbenjamin # your disqus username
+    孩子，记住，当你对世界产生疑惑的时候，去做爱。 # this means to ignore newlines until "baseurl:"
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "https://behaver.github.io" # the base hostname & protocol for your site
+twitter_username: false # your Twitter username
+github_username: behaver # your Github username
+disqus_username: false # your disqus username
 
-google-analytics: UA-75034651-1 # add it if you have one
+google-analytics: # add it if you have one
 
 skillstree: true # turn on or off the skills tree in about page
 
