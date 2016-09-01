@@ -9,7 +9,7 @@ tags: git ubuntu 服务器
 finished: true
 ---
 
-## 一、创建git用户
+## 一、创建服务器git用户
 
 在ubuntu上我们需要创建一个用于对外提供一切git服务的linux用户，等同于github的ssh地址中的`__git__`@github.com/behaver/xxx.git
 中的@前的git，这就是github服务器上用来提供git服务的系统用户。
@@ -56,4 +56,21 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储
 这里同时需要我们把每个git使用者的公钥（id_rsa.pub）收集起来放到/home/git/.ssh/authorized_keys文件夹里。
 
 ## 三、安装配置git服务
+
+安装git服务器：
+
+`$ sudo apt-get install git git-core`
+
+`$ sudo mkdir /home/git/repositories`      --创建git仓库存储目录  
+`$ sudo chown git:git /home/git/repositories`     --设定所有者  
+`$ sudo chmod 755 /home/git/repositories`     --设置仓库访问权限  
+
+以上设定的仓库位置也可以自定义路径存放
+
+接下来初始化全局设置：
+
+$ git config --global user.name “git”  
+$ git config --global user.email “git@本机IP或域名”
+
+## 四、客户端的配置
 
