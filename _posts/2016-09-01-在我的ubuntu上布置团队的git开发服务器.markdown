@@ -48,10 +48,11 @@ git用户至此创建完毕，我们还需要将其设为管理员账户，我�
 
 找到下面几行，去掉前面"#"注释，并设置：
 
-StrictModes  no     - 在用户名和其公钥文件名不匹配时将通过验证  
-RSAAuthentication yes   - 使用纯的RSA认证  
-PubkeyAuthentication yes    - 允许Public Key  
-AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储位置  
+StrictModes  no     - 在用户名和其公钥文件名不匹配时将通过验证。  
+RSAAuthentication yes   - 使用纯的RSA认证。  
+PubkeyAuthentication yes    - 允许Public Key。  
+AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储位置。
+
 这里同时需要我们把每个git使用者的公钥（id_rsa.pub）收集起来放到/home/git/.ssh/authorized_keys文件夹里。
 
 ## 三、安装配置git服务
