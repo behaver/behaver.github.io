@@ -112,7 +112,7 @@ known_hosts(已知传输主机列表)
 
 `$ git push -u origin vincent`
 
-上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
+上面命令将本地的vincent分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
 
 #### 在本地创建远端存在的分支
 
