@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "在ubuntu上布置git协作服务器"
-subtitle: "在项目文件正式上传前的git服务器. "
+title: "在ubuntu上布置Git协作服务器"
 date: 2016-09-01
 author: Vincent, Dong
 category: 服务器
-tags: git ubuntu 服务器
+tags: Git Linux 服务器
 finished: true
 ---
 
