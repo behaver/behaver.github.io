@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在ubuntu上布置团队的git协作服务器"
+title: "在ubuntu上布置git协作服务器"
 subtitle: "在项目文件正式上传前的git服务器. "
 date: 2016-09-01
 author: Vincent, Dong
@@ -65,7 +65,10 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储
 `$ sudo chown git:git /home/git/repositories`     --设定所有者  
 `$ sudo chmod 755 /home/git/repositories`     --设置仓库访问权限  
 
-以上设定的仓库位置也可以自定义路径存放
+以上设定的仓库位置也可以自定义路径存放，先选定一个目录作为Git仓库，假定是/srv/sample.git， 在/srv目录下输入命令：
+
+`$ sudo git init --bare sample.git`  
+`$ sudo chown -R git:git sample.git --把owner改为git`
 
 接下来初始化全局设置：
 
@@ -74,3 +77,41 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储
 
 ## 四、客户端的配置
 
+### 创建管理ssh密钥
+
+由于在ssh传输协议中，是通过密钥进行传输认证的，所以我们需要为每一个参加传输的主机创建ssh密钥。
+
+在默认用户的主目录路径下，运行以下命令，按照提示创建（可直接回车略过）  
+`$ ssh-keygen -t rsa`
+
+公钥和私钥默认会保存在~/.ssh目录下，如下所示：  
+id_rsa(私钥)  
+id_rsa.pub(公钥)  
+known_hosts(已知传输主机列表)
+
+将客户端的公钥文件通过ssh复制到服务器的临时目录下：
+
+`$ ssh-copy-id git@git服务器IP`
+
+或通过以下命令：
+
+`ssh gitadmin@host 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub`
+
+### 测试git传输
+
+上述配置完成之后，我们clone一个服务器上的仓库来测试配置是否成功：
+
+`$ git clone git@git服务器IP:/home/git/repositories/sample.git`
+
+## 五、安全处理
+
+出于安全考虑，可以设置服务器端的git用户不允许登录shell，可通过：
+
+`$ vim /etc/passwd`
+
+并找到下面的一行，改为其下一行：
+
+git:x:1001:1001:,,,:/home/git:/bin/bash  
+git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+
+这样，在服务器端，git用户可以正常通过ssh使用git服务，但无法登录shell。因为我们为git用户指定的git-shell每次一登录就自动退出。
