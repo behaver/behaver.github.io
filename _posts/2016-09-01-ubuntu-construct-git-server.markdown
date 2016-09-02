@@ -64,7 +64,7 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储
 `$ sudo chown git:git /home/git/repositories`     --设定所有者  
 `$ sudo chmod 755 /home/git/repositories`     --设置仓库访问权限  
 
-以上设定的仓库位置也可以自定义路径存放，先选定一个目录作为Git仓库，假定是/srv/sample.git， 在/srv目录下输入命令：
+在/home/git/repositories目录下输入命令：
 
 `$ sudo git init --bare sample.git`  
 `$ sudo chown -R git:git sample.git --把owner改为git`
@@ -96,11 +96,46 @@ known_hosts(已知传输主机列表)
 
 `ssh gitadmin@host 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub`
 
-### 测试git传输
+### 使用Git服务传输部署
 
 上述配置完成之后，我们clone一个服务器上的仓库来测试配置是否成功：
 
 `$ git clone git@git服务器IP:/home/git/repositories/sample.git`
+
+#### 在本地创建远端不存在分支
+
+创建个人开发分支vincent：
+
+`$ git checkout -b vincent`
+
+假设在当前分支vincent做了一些改动后并提交后，此时远端服务器上不存在vincent分支，所以我们第一次推送一个远端不存在的分支是需要使用git push -u的参数。origin表示远端主机，vincent表示本机分支。
+
+`$ git push -u origin vincent`
+
+上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。
+
+#### 在本地创建远端存在的分支
+
+若我们想获取一个本地存在的远端git仓库分支，比如说我们需要获取一个远端git仓库中的dev分支，那么应如下操作：
+
+首先创建一个对应的本地分支
+
+`$ git checkout -b dev`
+
+然后拉取远端dev分支，并建立上游追踪关系：
+
+`$ git pull origin dev`
+
+这里pull命令的格式是：
+
+`$ git pull <远程主机名> <远程分支名>:<本地分支名>`
+
+其中我们省略了冒号:之后的本地分支名，那么则默认为本地当前分支。
+
+这里多说一句，以上的pull命令等同以下的两条命令：
+
+`$ git fetch origin`
+`$ git merge origin/dev`
 
 ## 五、安全处理
 
