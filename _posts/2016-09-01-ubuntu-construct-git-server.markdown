@@ -137,6 +137,19 @@ known_hosts(已知传输主机列表)
 `$ git fetch origin`
 `$ git merge origin/dev`
 
+#### 配置忽略文件列表
+
+因为在实际的版本控制之中，有些例如缓存的文件需要忽略版本控制处理，这里需要我们创建一个忽略列表文件：.gitignore文件在根目录下面。
+
+`$ vim .gitignore`
+
+在新建的文件输入类似之下的路径条目，标识忽略git版本控制处理：
+
+www/Runtime  
+admin/Runtime  
+
+然后对更改进行添加、提交，即可。
+
 ## 五、安全处理
 
 出于安全考虑，可以设置服务器端的git用户不允许登录shell，可通过：
