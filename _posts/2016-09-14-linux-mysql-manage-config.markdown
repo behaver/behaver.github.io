@@ -1,0 +1,70 @@
+---
+layout: post
+title: "Linux上MySQL的管理配置"
+date: 2016-09-14
+author: Vincent, Dong
+category: 服务器
+tags: MySQL Linux 服务器
+finished: true
+---
+
+## MySQL服务的启动、停止、重启
+
+`$ service mysql start/stop/restart`
+
+## 数据库 用户/权限 管理
+
+先登陆到MySQL服务
+
+`$ mysql -u root -p`
+
+然后选择使用mysql数据库
+
+`mysql> use mysql;`
+
+### 创建/删除用户：
+
+团队开发过程中，可能会需要共同使用一个数据库，这就需要一个专有数据库用户用于团队开发。或在生产环境中，我们应有专门的用户来提供服务，而不应该直接使用root用户提供数据库服务。
+
+这里我们新建一个dev的用户用于团队开发。
+
+`mysql> CREATE USER 'dev'@'%' IDENTIFIED BY 'password';`
+
+同时删除可远程登陆的root用户，使得root用户只可本机登陆：
+
+`mysql> DROP USER 'root'@'%';`
+
+### 用户授权：
+
+使用GRANT命令修改 用户/权限 信息
+
+`mysql> GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY 'pwd' WITH GRANT OPTIONS;`
+
+这个命令的基本格式是这样的：
+
+`mysql> GRANT 权限 ON 库.表 TO '用户'@'服务器IP' IDENTIFIED BY '密码' WITH GRANT OPTIONS;`
+
+命令最后的WITH GRANT OPTIONS表示授予该用户授权其他用户的权限。这里如果是给普通用户授权，则不需要加该部分。
+
+这里我们来给刚创建的dev授予权限：
+
+`mysql> GRANT ALL ON myuniuni.* TO 'dev'@'%';`
+
+修改用户权限之后，我们需要刷新权限缓存，才能够使刚刚的修改生效。
+
+`mysql> flush privileges;`
+
+当然，你也可以收回你授予用户的权限，通过revoke命令来实现，它的格式是这样：
+
+`mysql> REVOKE 权限 ON 库.表 FROM '用户'@'服务器IP';`
+
+### 修改用户密码
+
+如果我们需要修改某一个用户的密码，可以直接使用SET PASSWORD命令进行修改。
+
+`SET PASSWORD FOR 'dev'@'%' = PASSWORD('newpassword');`
+
+如果是修改当前登陆用户，可以直接使用：
+
+`SET PASSWORD = PASSWORD('newpassword');`
+

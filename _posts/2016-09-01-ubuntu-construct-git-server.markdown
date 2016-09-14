@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "在ubuntu上布置Git协作服务器"
+title: "在Linux上布置Git协作服务器"
 date: 2016-09-01
 author: Vincent, Dong
 category: 服务器
@@ -148,7 +148,15 @@ known_hosts(已知传输主机列表)
 www/Runtime  
 admin/Runtime  
 
-然后对更改进行添加、提交，即可。
+然后清除暂存区内部的全部缓存，再重新添加工作区所有有效文件到暂存区，这样即可废弃忽略文件的追踪。
+
+`$ git rm -r --cached .`
+
+`$ git add .`
+
+最终提交追踪更改到版本库，即可完成忽略操作。
+
+`$ git commit -m "修改忽略文件。"`
 
 ## 五、安全处理
 
