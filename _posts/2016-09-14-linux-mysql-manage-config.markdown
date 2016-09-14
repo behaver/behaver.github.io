@@ -8,11 +8,7 @@ tags: MySQL Linux 服务器
 finished: true
 ---
 
-## MySQL服务的启动、停止、重启
-
-`$ service mysql start/stop/restart`
-
-## 数据库 用户/权限 管理
+## 配置MySQL远程登陆
 
 先登陆到MySQL服务
 
@@ -58,7 +54,29 @@ finished: true
 
 `mysql> REVOKE 权限 ON 库.表 FROM '用户'@'服务器IP';`
 
-### 修改用户密码
+### 配置访问ip
+
+配置MySQL不再只允许本地访问：
+
+`$ sudo vim /etc/mysql/my.cnf`
+
+找到bind-address  = 127.0.0.1
+
+将其注释掉，或改为：bind-address  = 0.0.0.0
+
+重启mysql： 
+
+`$ sudo service mysql restart`
+
+### 远程登陆测试
+
+在另一台计算机上远程登陆mysql：
+
+`$ mysql -h 服务器IP -u dev -P 3306 -p`
+
+输入密码后，即可进入mysql命令行。
+
+## 修改用户密码
 
 如果我们需要修改某一个用户的密码，可以直接使用SET PASSWORD命令进行修改。
 
@@ -67,4 +85,3 @@ finished: true
 如果是修改当前登陆用户，可以直接使用：
 
 `SET PASSWORD = PASSWORD('newpassword');`
-
