@@ -10,7 +10,7 @@ finished: true
 
 ## 一、创建服务器git用户
 
-在ubuntu上我们需要创建一个用于对外提供一切git服务的linux用户，等同于github的ssh地址中的`__git__`@github.com/behaver/xxx.git
+在ubuntu上我们需要创建一个用于对外提供一切git服务的linux用户，等同于github的ssh地址中的__git__@github.com/behaver/xxx.git
 中的@前的git，这就是github服务器上用来提供git服务的系统用户。
 
 `$ sudo useradd -m git`
