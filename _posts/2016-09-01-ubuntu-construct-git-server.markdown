@@ -52,8 +52,6 @@ RSAAuthentication yes   - 使用纯的RSA认证。
 PubkeyAuthentication yes    - 允许Public Key。  
 AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储位置。
 
-这里同时需要我们把每个git使用者的公钥（id_rsa.pub）收集起来放到/home/git/.ssh/authorized_keys文件夹里。
-
 ## 三、安装配置git服务
 
 安装git服务器：
@@ -94,7 +92,7 @@ known_hosts(已知传输主机列表)
 
 或通过以下命令：
 
-`ssh gitadmin@host 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub`
+`ssh git@host 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub`
 
 ### 使用Git服务传输部署
 
