@@ -41,7 +41,7 @@ finished: true
 
 ## Apache站点配置文件说明
 
-{% highlight html %}
+{% highlight %}
 <VirtualHost domain:80> 
     # 主站点名称，用它也可以访问到服务器，可以定义多个，用空格隔开即可。
     ServerName wizard 
@@ -50,10 +50,27 @@ finished: true
     CustomLog   /var/log/apache2/wizard-access.log combined 
     DocumentRoot /var/Wizard/ 
     <Directory /var/Wizard/> 
+        # 配置在目录使用哪些特性，常用的值和基本含义如下： 
+        #    ExecCGI: 在该目录下允许执行CGI脚本。 
+        #    FollowSymLinks: 在该目录下允许文件系统使用符号连接。 
+        #    Indexes: 当用户访问该目录时，如果用户找不到DirectoryIndex指定的主页文件(例如index.html),则返回该目录下的文件列表给用户。 
+        #    SymLinksIfOwnerMatch: 当使用符号连接时，只有当符号连接的文件拥有者与实际文件的拥有者相同时才可以访问。
         Options Indexes FollowSymLinks MultiViews 
+
+        # 允许存在于.htaccess文件中的指令类型(.htaccess文件名是可以改变的，其文件名由AccessFileName指令决定)
         AllowOverride all 
+
+        # 控制在访问时Allow和Deny两个访问规则哪个优先
         Order allow,deny 
-        allow from all 
+
+        # 允许访问的主机列表
+        Allow from all 
+
+        # 拒绝访问的主机列表（可用域名或子网，例如：Deny from 192.168.0.0/16）
+        # Deny from all
+
+        # 站点默认访问文件设置
+        DirectoryIndex server.php
     </Directory> 
 </VirtualHost>
 {% endhighlight %}
@@ -64,13 +81,13 @@ finished: true
 
 `$ sudo ln -s /etc/apache2/sites-available/004-wizard.conf /etc/apache2/sites-enabled/004-wizard.conf`
 
-## 修改Apache总配置文件
+## 修改Apache主配置文件
 
 `$ sudo vim apache2.conf`
 
 在其中添加下面一段代码，以给网站存放路径访问权限：
 
-{% highlight html %}
+{% highlight %}
 <Directory /var/Wizard/>
         Options Indexes FollowSymLinks
         AllowOverride None
