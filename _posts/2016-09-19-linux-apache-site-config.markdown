@@ -1,0 +1,85 @@
+---
+layout: post
+title: "Linux上Apache2.4+的站点配置"
+date: 2016-09-19
+author: Vincent, Dong
+category: 服务器
+tags: Apache Linux 服务器
+finished: true
+---
+
+这里我们假设需要在apache下新建一个www.wizard.com的站点。
+
+## Host文件配置
+
+修改系统Host配置文件：
+
+`$ sudo vim /etc/hosts`
+
+在其中添加一行：  
+127.0.0.1     www.wizard.com
+
+重新启动网络服务：
+
+`$ sudo service networking restart`
+
+最后，在浏览器中输入 **www.wizard.com** 测试访问
+
+## 新建Apache站点配置文件
+
+进入到目录 /etc/apache2/sites-available/ 下
+
+`$ cd /etc/apache2/sites-available`
+
+查看现有的站点配置文件
+
+`$ la`
+
+依据已有站点配置的序号(此处假设之前已有000-003)，自增1，新建一个站点配置文件
+
+`$ sudo vim 004-wizard.conf`
+
+## Apache站点配置文件说明
+
+{% highlight html %}
+<VirtualHost domain:80> 
+    # 主站点名称，用它也可以访问到服务器，可以定义多个，用空格隔开即可。
+    ServerName wizard 
+    # 如果服务器有任何问题将发信到这个邮箱， 这个邮箱会在服务器产生的某些页面中出现，例如，错误报告
+    ServerAdmin qianxing@yeah.net 
+    CustomLog   /var/log/apache2/wizard-access.log combined 
+    DocumentRoot /var/Wizard/ 
+    <Directory /var/Wizard/> 
+        Options Indexes FollowSymLinks MultiViews 
+        AllowOverride all 
+        Order allow,deny 
+        allow from all 
+    </Directory> 
+</VirtualHost>
+{% endhighlight %}
+
+配置完成后保存该文件。
+
+## 链接Apache站点配置文件
+
+`$ sudo ln -s /etc/apache2/sites-available/004-wizard.conf /etc/apache2/sites-enabled/004-wizard.conf`
+
+## 修改Apache总配置文件
+
+`$ sudo vim apache2.conf`
+
+在其中添加下面一段代码，以给网站存放路径访问权限：
+
+{% highlight html %}
+<Directory /var/Wizard/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
+{% endhighlight %}
+
+## 重启Apache服务
+
+`$ sudo service apache2 restart`
+
+到此，即可测试访问 www.wizard.com
