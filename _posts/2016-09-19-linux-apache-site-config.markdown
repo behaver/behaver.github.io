@@ -41,7 +41,7 @@ finished: true
 
 ## Apache站点配置文件说明
 
-{% highlight md %}
+{% highlight html %}
 <VirtualHost domain:80> 
     # 主站点名称，用它也可以访问到服务器，可以定义多个，用空格隔开即可。
     ServerName wizard 
@@ -87,7 +87,7 @@ finished: true
 
 在其中添加下面一段代码，以给网站存放路径访问权限：
 
-{% highlight md %}
+{% highlight html %}
 <Directory /var/Wizard/>
         Options Indexes FollowSymLinks
         AllowOverride None
