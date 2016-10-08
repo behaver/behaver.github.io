@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linux上MySQL的管理配置"
+title: "Linux上MySQL用户的管理"
 date: 2016-09-14
 author: Vincent, Dong
 category: 服务器
