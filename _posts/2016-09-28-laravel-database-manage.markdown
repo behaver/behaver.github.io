@@ -82,6 +82,29 @@ Schema::create('tablename', function (Blueprint $table) {
 
 `$ composer dump-autoload`
 
+## 生成控制器文件
+
+在数据模型和底层数据架构完毕后，我们需要建立对应的控制器来处理用户的请求逻辑。
+
+在项目路径下执行：
+
+`$ php artisan make:controller PhotoController`
+
+接着，我们需要注册一个指向此控制器的资源路由：
+
+Route::resource('photo', 'PhotoController');
+
+### 由资源控制器处理的行为
+
+动词 | 路径 | 行为 | 路由名称
+GET | /photo | 索引 | photo.index
+GET | /photo/create | 创建 | photo.create
+POST | /photo | 保存 | photo.store
+GET | /photo/{photo_id} | 显示 | photo.show
+GET | /photo/{photo_id}/edit | 编辑 | photo.edit
+PUT/PATCH | /photo/{photo_id} | 更新 | photo.update
+DELETE | /photo/{photo_id} | 删除 | photo.destroy
+
 ## 总结
 
 使用migration文件管理数据库的好处是
