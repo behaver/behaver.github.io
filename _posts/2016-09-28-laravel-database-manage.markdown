@@ -96,7 +96,8 @@ Route::resource('photo', 'PhotoController');
 
 ### 由资源控制器处理的行为
 
-动词 | 路径 | 行为 | 路由名称
+:------ | :------ | :------- | :-----
+__方法__ | __路径__ | __行为__ | __路由名称__
 GET | /photo | 索引 | photo.index
 GET | /photo/create | 创建 | photo.create
 POST | /photo | 保存 | photo.store
