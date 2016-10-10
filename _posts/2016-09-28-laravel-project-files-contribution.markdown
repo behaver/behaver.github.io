@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Laravel框架下的数据库管理"
+title: "Laravel框架下的项目文件创建流程"
 date: 2016-09-19
 author: Vincent, Dong
 category: PHP
@@ -106,7 +106,6 @@ GET | /photo/{photo_id}/edit | 编辑 | photo.edit
 PUT/PATCH | /photo/{photo_id} | 更新 | photo.update
 DELETE | /photo/{photo_id} | 删除 | photo.destroy
 
-## 总结
+详细关于控制器的文档说明，请参见：https://laravel-china.org/docs/5.0/controllers
 
-使用migration文件管理数据库的好处是
 
