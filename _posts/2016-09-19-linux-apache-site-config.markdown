@@ -42,6 +42,7 @@ finished: true
 ## Apache站点配置文件说明
 
 {% highlight html %}
+#domain 通常设为*
 <VirtualHost domain:80> 
     # 主站点名称，用它也可以访问到服务器，可以定义多个，用空格隔开即可。
     ServerName wizard 

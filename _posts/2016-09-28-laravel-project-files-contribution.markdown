@@ -31,7 +31,11 @@ finished: false
 
 在默认情况下，在数据库中有 updated_at 和 created_at 两个字段，如果不想设定或自动更新这两个字段，则做如下设置：
 
-`protected $timestamps = false;`
+`public $timestamps = false;`
+
+批量赋值字段黑名单：
+
+`public $guarded = ['id'];`
 
 详细的关于 laravel 数据模型的使用可以参照：
 
@@ -43,7 +47,7 @@ https://laravel-china.org/docs/5.0/eloquent
 
 在项目路径下执行：
 
-`$ sudo php artisan make:migration create_tablename_table --create=tablename`
+`$ php artisan make:migration create_tablename_table --create=tablename`
 
 这里使用--create=tablename选项的好处是，artisan程序会在生成的迁移文件up方法中自动加入:  
 {% highlight md %}
@@ -68,7 +72,7 @@ Schema::create('tablename', function (Blueprint $table) {
 
 创建完数据表迁移文件，并添加了其中的字段内容之后，执行下面命令执行迁移文件：
 
-`$ sudo php artisan migrate --database=db_config_name`
+`$ php artisan migrate --database=db_config_name`
 
 这其中的db_config_name为你在配置文件中配置的数据库链接的名称。
 
@@ -76,7 +80,7 @@ Schema::create('tablename', function (Blueprint $table) {
 
 如果你发现之前执行的迁移文件中有错误，那么此时在还未向数据表中插入数据的时候，我们可以对之前的迁移命令进行回滚，这样便可以撤销之前的错误。
 
-`$ sudo php artisan migrate:rollback --database=db_config_name`
+`$ php artisan migrate:rollback --database=db_config_name`
 
 如果此时提示你出现找不到类文件的错误，那么需要更新自动载入路径，请执行下面命令：
 
