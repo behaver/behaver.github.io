@@ -168,3 +168,14 @@ git:x:1001:1001:,,,:/home/git:/bin/bash
 git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 
 这样，在服务器端，git用户可以正常通过ssh使用git服务，但无法登录shell。因为我们为git用户指定的git-shell每次一登录就自动退出。
+
+## 六、git服务器ip变更
+
+修改远程仓库的地址
+
+`git remote set-url origin gitadmin@192.168.1.71:~/repositories/myuniuni.git`
+
+添加ip对应下的秘钥
+
+`ssh-copy-id gitadmin@192.168.1.48`
+
