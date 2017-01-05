@@ -3,7 +3,7 @@ layout: post
 title: "Ubuntu下Composer的使用"
 date: 2017-01-03
 author: Vincent, Dong
-category: 服务器 Php
+category: 服务器
 tags: Composer Linux Php
 finished: false
 ---
