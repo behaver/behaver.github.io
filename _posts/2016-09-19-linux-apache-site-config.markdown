@@ -43,12 +43,14 @@ finished: true
 
 {% highlight html %}
 #domain 通常设为*
-<VirtualHost domain:80> 
+<VirtualHost *:80> 
     # 主站点名称，用它也可以访问到服务器，可以定义多个，用空格隔开即可。
-    ServerName wizard 
+    ServerName www.wizard.com
+    ServerAlias wizard.com
     # 如果服务器有任何问题将发信到这个邮箱， 这个邮箱会在服务器产生的某些页面中出现，例如，错误报告
     ServerAdmin qianxing@yeah.net 
-    CustomLog   /var/log/apache2/wizard-access.log combined 
+    ErrorLog ${APACHE_LOG_DIR}/wizard-error.log
+    CustomLog ${APACHE_LOG_DIR}/wizard-access.log combined
     DocumentRoot /var/Wizard/ 
     <Directory /var/Wizard/> 
         # 配置在目录使用哪些特性，常用的值和基本含义如下： 
@@ -84,7 +86,7 @@ finished: true
 
 ## 修改Apache主配置文件
 
-`$ sudo vim apache2.conf`
+`$ sudo vim /etc/apache2/apache2.conf`
 
 在其中添加下面一段代码，以给网站存放路径访问权限：
 

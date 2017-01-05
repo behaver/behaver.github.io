@@ -62,15 +62,15 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys  - 设置客户端公钥的存储
 `$ sudo chown git:git /home/git/repositories`     --设定所有者  
 `$ sudo chmod 755 /home/git/repositories`     --设置仓库访问权限  
 
-在/home/git/repositories目录下输入命令：
+在`$ cd /home/git/repositories`目录下输入命令：
 
 `$ sudo git init --bare sample.git`  
-`$ sudo chown -R git:git sample.git --把owner改为git`
+`$ sudo chown -R git:git sample.git` --把owner改为git
 
 接下来初始化全局设置：
 
-`$ git config --global user.name “git”`  
-`$ git config --global user.email “git@本机IP或域名”`
+`$ git config --global user.name "git"`  
+`$ git config --global user.email "git@本机IP或域名"`
 
 ## 四、客户端的配置
 
@@ -99,6 +99,20 @@ known_hosts(已知传输主机列表)
 上述配置完成之后，我们clone一个服务器上的仓库来测试配置是否成功：
 
 `$ git clone git@git服务器IP:/home/git/repositories/sample.git`
+
+若是在一个存在的项目路径下进行git配置：
+
+初始化git项目：
+
+`$ git init`
+
+添加远程仓库地址：
+
+`$ git remote add origin git@139.224.1.11:~/repositories/sample.git`
+
+设置上游分支：
+
+`git push --set-upstream origin master`
 
 #### 在本地创建远端不存在分支
 
@@ -164,8 +178,8 @@ admin/Runtime
 
 并找到下面的一行，改为其下一行：
 
-git:x:1001:1001:,,,:/home/git:/bin/bash  
-git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+`git:x:1001:1001:,,,:/home/git:/bin/bash`
+`git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell`
 
 这样，在服务器端，git用户可以正常通过ssh使用git服务，但无法登录shell。因为我们为git用户指定的git-shell每次一登录就自动退出。
 
@@ -173,9 +187,9 @@ git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 
 修改远程仓库的地址
 
-`git remote set-url origin gitadmin@192.168.1.71:~/repositories/myuniuni.git`
+`git remote set-url origin git@host:~/repositories/sample.git`
 
 添加ip对应下的秘钥
 
-`ssh-copy-id gitadmin@192.168.1.48`
+`ssh-copy-id git@host`
 

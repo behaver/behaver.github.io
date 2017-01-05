@@ -1,0 +1,15 @@
+---
+layout: post
+title: "周易集要"
+date: 2017-01-04
+author: Vincent, Dong
+category: 周易
+tags: 周易
+finished: false
+---
+
+是故易者象也，象也者像也。——《系辞传》
+
+阳遇阴则通，遇阳则阻。——吴挚甫《易说》
+
+易之道如电然，同性则相违，异性则相感。——《焦氏易诂》

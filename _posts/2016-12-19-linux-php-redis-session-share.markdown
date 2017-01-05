@@ -11,6 +11,7 @@ finished: true
 ## 安装Redis
 
 `$ sudo apt-get update`
+
 `$ sudo apt-get install redis-server`
 
 安装完成后，Redis服务器会自动启动，我们检查Redis服务器程序，执行
@@ -73,6 +74,7 @@ finished: true
 
 修改:
 `session.save_handler = redis`
+
 `session.save_path = "tcp://127.0.0.1:6379/0?auth=my_password"`
 
 为了在二级域名之间共享session，需要设置
