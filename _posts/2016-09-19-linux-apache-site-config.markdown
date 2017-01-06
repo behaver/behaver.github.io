@@ -51,8 +51,8 @@ finished: true
     ServerAdmin qianxing@yeah.net 
     ErrorLog ${APACHE_LOG_DIR}/wizard-error.log
     CustomLog ${APACHE_LOG_DIR}/wizard-access.log combined
-    DocumentRoot /var/Wizard/ 
-    <Directory /var/Wizard/> 
+    DocumentRoot /var/www/Wizard
+    <Directory /var/www/Wizard> 
         # 配置在目录使用哪些特性，常用的值和基本含义如下： 
         #    ExecCGI: 在该目录下允许执行CGI脚本。 
         #    FollowSymLinks: 在该目录下允许文件系统使用符号连接。 
@@ -73,7 +73,7 @@ finished: true
         # Deny from all
 
         # 站点默认访问文件设置
-        DirectoryIndex server.php
+        DirectoryIndex index.php
     </Directory> 
 </VirtualHost>
 {% endhighlight %}

@@ -108,7 +108,7 @@ known_hosts(已知传输主机列表)
 
 添加远程仓库地址：
 
-`$ git remote add origin git@139.224.1.11:~/repositories/sample.git`
+`$ git remote add origin git@host:~/repositories/sample.git`
 
 设置上游分支：
 
