@@ -51,6 +51,8 @@ finished: true
 
 `$ redis-cli -a my_password`
 
+不输入密码登录时，执行命令`> keys *`会提示权限错误，以此可作为验证方法。
+
 ## 安装Redis的PHP扩展
 
 `$ sudo apt-get install php5-redis`

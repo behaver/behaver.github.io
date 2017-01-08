@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ubuntu下的mongo安装及配置管理"
+title: "Ubuntu下的Mongo安装及配置管理"
 date: 2017-01-03
 author: Vincent, Dong
 category: 服务器
@@ -58,6 +58,8 @@ https://docs.mongodb.com/master/tutorial/install-mongodb-on-ubuntu/?_ga=1.104487
 MongoDB Support => enabled
 
 ### 创建数据库用户
+
+`> use admin`
 
 db.createUser({
     user: "root",
