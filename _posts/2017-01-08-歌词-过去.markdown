@@ -8,8 +8,12 @@ tags: 歌词
 finished: false
 ---
 
+## 正文
+
+G
 你不必坚持
 
+    Bm         Em
 爱不是刻意的事
 
 不可以的事
