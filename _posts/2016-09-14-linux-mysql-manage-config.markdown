@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linux上MySQL用户的管理"
+title: "Linux上MySQL的管理配置"
 date: 2016-09-14
 author: Vincent, Dong
 category: 服务器
@@ -85,3 +85,43 @@ finished: true
 如果是修改当前登陆用户，可以直接使用：
 
 `SET PASSWORD = PASSWORD('newpassword');`
+
+## MySQL备份与恢复
+
+### MySQL数据备份
+
+#### 备份一个数据库
+
+mysqldump基本语法：
+
+mysqldump -u username -p dbname table1 table2 ...-> BackupName.sql
+
+dbname参数表示数据库的名称；
+table1和table2参数表示需要备份的表的名称，为空则整个数据库备份；
+BackupName.sql参数表设计备份文件的名称，文件名前面可以加上一个绝对路径。通常将数据库被分成一个后缀名为sql的文件；
+使用root用户备份test数据库下的person表
+
+`mysqldump -u root -p test person > D:\backup.sql`
+
+#### 备份多个数据库
+
+mysqldump -u username -p --databases dbname2 dbname2 > Backup.sql
+加上了--databases选项，然后后面跟多个数据库
+
+`mysqldump -u root -p --databases test mysql > D:\backup.sql`
+
+#### 备份所有数据库
+
+mysqldump命令备份所有数据库的语法如下：
+
+mysqldump -u username -p -all-databases > BackupName.sql
+
+`mysqldump -u -root -p -all-databases > D:\all.sql`
+
+### MySQL数据还原
+
+还原使用mysqldump命令备份的数据库的语法如下：
+
+mysql -u root -p [dbname] < backup.sql
+
+`mysql -u root -p < C:\backup.sql`
