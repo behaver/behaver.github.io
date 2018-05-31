@@ -2,7 +2,7 @@
 layout: post
 title: "Ubuntu下的Mongo安装及配置管理"
 date: 2017-01-03
-author: Vincent, Dong
+author: 董三碗
 category: 服务器
 tags: MongoDB Linux 服务器
 finished: true

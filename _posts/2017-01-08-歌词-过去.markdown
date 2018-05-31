@@ -2,10 +2,10 @@
 layout: post
 title: "歌词-过去"
 date: 2017-01-08
-author: Vincent, Dong
+author: 董三碗
 category: 文字
 tags: 歌词
-finished: false
+finished: true
 ---
 
 ## 正文

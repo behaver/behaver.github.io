@@ -2,7 +2,7 @@
 layout: post
 title: "在Linux上布置Git协作服务器"
 date: 2016-09-01
-author: Vincent, Dong
+author: 董三碗
 category: 服务器
 tags: Git Linux 服务器
 finished: true

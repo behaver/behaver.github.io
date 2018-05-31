@@ -2,7 +2,7 @@
 layout: post
 title: "Linux上Apache2.4+的站点配置"
 date: 2016-09-19
-author: Vincent, Dong
+author: 董三碗
 category: 服务器
 tags: Apache Linux 服务器
 finished: true

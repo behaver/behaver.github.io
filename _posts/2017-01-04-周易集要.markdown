@@ -2,7 +2,7 @@
 layout: post
 title: "周易集要"
 date: 2017-01-04
-author: Vincent, Dong
+author: 董三碗
 category: 周易
 tags: 周易
 finished: false

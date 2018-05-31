@@ -2,7 +2,7 @@
 layout: post
 title: "Linux上配置PHP使用Redis共享Session"
 date: 2016-09-14
-author: Vincent, Dong
+author: 董三碗
 category: 服务器
 tags: Redis Linux 服务器
 finished: true

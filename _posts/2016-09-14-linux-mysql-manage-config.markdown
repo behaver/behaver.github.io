@@ -2,7 +2,7 @@
 layout: post
 title: "Linux上MySQL的管理配置"
 date: 2016-09-14
-author: Vincent, Dong
+author: 董三碗
 category: 服务器
 tags: MySQL Linux 服务器
 finished: true
