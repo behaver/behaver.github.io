@@ -63,7 +63,8 @@ ssh-agent 是管理多个 ssh key 的代理，用户使用 `ssh-add` 命令将�
 
 2、在文件中输入如下内容
 
-`Host github
+```
+Host github
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_rsa_github
@@ -73,7 +74,8 @@ Host xxx
     User git
     IdentityFile ~/.ssh/id_rsa_xxx
 
-...`
+...
+```
 
 到此就完成了多个 ssh 密钥同时使用的配置
 
