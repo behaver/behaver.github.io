@@ -47,7 +47,13 @@ ssh-agent 是管理多个 ssh key 的代理，用户使用 `ssh-add` 命令将�
 
 2、添加你的私钥至 ssh-agent：
 
-`ssh-add ~/.ssh/id_rsa_github`
+`ssh-add -K ~/.ssh/id_rsa_github`
+
+ssh-add 这个命令不是用来永久性的记住你所使用的私钥的。实际上，它的作用只是把你指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了。
+
+在 Mac OS X 系统中，我们使用 -K 参数通过 Keychain 服务来请求，这样在重新启动系统后，就不必每次都是用 ssh-add 添加密钥代理了。
+
+或者，你也可以将 ssh-add 命令的内容写进 .bashrc 或 .bash_profile , 这样也避免了系统重启后重新添加密钥的问题。
 
 如上操作添加你的全部私钥。
 
